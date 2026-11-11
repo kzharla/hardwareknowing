@@ -1,0 +1,309 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="theme-color" content="#101a27">
+<title>Hardware Chronicles — Akademi Teknologi</title>
+<script src="https://cdn.tailwindcss.com"></script>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Cinzel:wght@500;600;700;800&family=Nunito:wght@400;600;700;800;900&display=swap');
+:root{--ink:#eeeadd;--muted:#bbc5c0;--gold:#dfbd78;--night:#101a27;--panel:#192b3b;--line:#526975}
+*{box-sizing:border-box}body{margin:0;min-height:100vh;background:radial-gradient(ellipse at 15% 0%,#2d5260 0,transparent 35%),radial-gradient(ellipse at 90% 75%,#45354e 0,transparent 32%),var(--night);color:var(--ink);font-family:Nunito,system-ui,sans-serif}
+h1,h2,h3,.serif{font-family:Cinzel,Georgia,serif}.shell{max-width:1180px;margin:auto;padding:18px}.glass{background:linear-gradient(145deg,#1c3243f5,#142333f7);border:1px solid #506672;border-radius:20px;box-shadow:0 18px 50px #0005}.ornament{border:1px solid #9b8555;box-shadow:inset 0 0 0 4px #b89b5814,0 10px 30px #0003}.navbtn{padding:10px 15px;border:1px solid transparent;border-radius:12px;color:#d0d9d3;font-weight:900;white-space:nowrap}.navbtn:hover,.navbtn.active{background:#dfbd7818;border-color:#a58d5b;color:#f5dda4}.btn{border:1px solid #b99b5d;background:linear-gradient(135deg,#e6ca8b,#ad8749);color:#19232a;font-weight:900;padding:12px 18px;border-radius:12px;cursor:pointer}.btn:hover{filter:brightness(1.08);transform:translateY(-1px)}.btn:disabled{opacity:.45;cursor:not-allowed;transform:none}.btn-alt{background:#263e4d;color:#f0eee4;border:1px solid #607681}.tab{display:none;animation:fade .25s ease}.tab.active{display:block}@keyframes fade{from{opacity:0;transform:translateY(6px)}to{opacity:1;transform:none}}.eyebrow{letter-spacing:3px;text-transform:uppercase;color:var(--gold);font-size:11px;font-weight:900}.hero-title{font-size:clamp(2.5rem,6vw,5rem);line-height:1.06}.muted{color:var(--muted)}.faction{border:1px solid #536873;background:#172938;border-radius:17px;padding:16px;text-align:left;transition:.2s;cursor:pointer}.faction.selected{outline:2px solid var(--gold);background:#3a3428}.faction:hover{transform:translateY(-3px)}.sigil{width:66px;height:66px;border-radius:18px;display:grid;place-items:center;font-size:34px;border:1px solid #a58b5c;background:linear-gradient(145deg,#334c55,#1b2a35)}.card{background:#1b2e3e;border:1px solid #455e69;border-radius:16px;padding:18px}.goldline{height:1px;background:linear-gradient(90deg,transparent,#b99b5d,transparent)}.meter{height:9px;background:#0c1722;border-radius:20px;overflow:hidden}.meter>span{height:100%;display:block;background:linear-gradient(90deg,#6dc8b7,#dfc17d);width:0;transition:.3s}.choice{display:flex;gap:12px;align-items:center;text-align:left;background:#203747;border:1px solid #4a6671;border-radius:13px;padding:14px;color:var(--ink);width:100%;font-weight:800;cursor:pointer}.choice:hover:not(:disabled){border-color:var(--gold);background:#2a4554}.choice.correct{border-color:#6dc8a2;background:#1d473c}.choice.wrong{border-color:#d87e79;background:#4a2c34}.pill{font-size:11px;letter-spacing:1px;border:1px solid #8e7952;color:#e8ce91;padding:5px 9px;border-radius:99px}.dropzone{min-height:72px;border:1px dashed #8d9b91;border-radius:12px;padding:12px;background:#122330;display:flex;align-items:center;justify-content:center;text-align:center;color:#bdc9c3}.dropzone.over{border-color:var(--gold);background:#3a3528}.dropzone.filled{border-style:solid;color:#f1d99d}.dragitem{background:#2b4554;border:1px solid #71858a;padding:11px 14px;border-radius:10px;cursor:grab;font-weight:900;touch-action:manipulation}.dragitem.selected{outline:2px solid var(--gold);background:#51452d}.content-text{font-size:17px;line-height:1.75;color:#d8dfd9}.content-text strong{color:#f0d99e}.smallcaps{font-size:11px;letter-spacing:1.5px;color:#c6b17d;font-weight:900}.footer{color:#93a4a2;font-size:12px}.hide{display:none!important}
+@media(max-width:700px){.shell{padding:11px}.navwrap{overflow-x:auto;padding-bottom:5px}.navbtn{font-size:13px;padding:9px 11px}.hero-title{font-size:2.65rem}.card{padding:14px}.content-text{font-size:16px}}
+</style>
+</head>
+<body>
+<div class="shell">
+<header class="flex flex-wrap items-center justify-between gap-4 mb-5">
+ <div class="flex items-center gap-3"><div class="w-12 h-12 rounded-2xl ornament grid place-items-center text-2xl bg-slate-800">⚙️</div><div><div class="serif font-bold tracking-widest text-amber-200">HARDWARE CHRONICLES</div><div class="text-xs muted tracking-widest">AKADEMI TEKNOLOGI • MEDIA PEMBELAJARAN</div></div></div>
+ <div class="pill">EDISI PEMBELAJARAN • KELAS 7–9</div>
+</header>
+<nav class="glass p-2 flex gap-1 navwrap mb-5" aria-label="Navigasi utama">
+ <button class="navbtn active" data-tab="home">⌂ Home</button>
+ <button class="navbtn" data-tab="tujuan">✧ Tujuan Pembelajaran</button>
+ <button class="navbtn" data-tab="materi">▤ Materi</button>
+ <button class="navbtn" data-tab="kuis">⚔ Kuis Interaktif</button>
+ <button class="navbtn" data-tab="drag">⛨ Drag &amp; Drop</button>
+ <button class="navbtn" data-tab="tentang">◈ Tentang</button>
+</nav>
+<main>
+<!-- HOME: application overview, cerita pembuka, dan pemilihan karakter/faksi. -->
+<section id="home" class="tab active">
+ <div class="glass ornament p-6 md:p-10 relative overflow-hidden">
+  <div class="absolute right-0 top-0 opacity-10 text-[180px] pointer-events-none">⚙</div>
+  <div class="grid md:grid-cols-[1.2fr_.8fr] gap-8 items-center relative">
+   <div><div class="eyebrow mb-3">APPLICATION OVERVIEW • THE LOST CORE</div>
+    <h1 class="hero-title serif font-extrabold mb-4">Warisan <span class="text-amber-200">Mesin</span><br>dan Cahaya</h1>
+    <p class="content-text max-w-2xl">Di dunia Aetheria, tiga peradaban menjaga keseimbangan teknologi: kaum Sylvan yang merawat pengetahuan kuno, serikat Bellator yang membangun mesin, dan legiun Accretia yang menguasai presisi mekanis. Inti Komputasi telah hilang. Pilih faksimu, pelajari hardware komputer, dan pulihkan keseimbangan dunia!</p>
+    <div class="flex flex-wrap gap-3 mt-6"><button class="btn" onclick="goTab('tujuan')">Mulai ekspedisi →</button><button class="btn btn-alt" onclick="goTab('materi')">Buka ensiklopedia</button></div>
+   </div>
+   <div class="card text-center">
+    <div class="eyebrow mb-2">KARAKTER PETUALANG</div><div id="heroAvatar" class="text-7xl my-3">🧝</div><div id="heroFaction" class="serif text-xl text-amber-100">Penjaga Sylvan</div><p id="heroDesc" class="muted text-sm mt-2">Pengetahuan alam, keseimbangan, dan kebijaksanaan.</p>
+    <div class="goldline my-4"></div><div class="grid grid-cols-3 gap-2 text-center"><div><div class="text-xl">📚</div><div class="smallcaps">Belajar</div></div><div><div class="text-xl">🧠</div><div class="smallcaps">Berlatih</div></div><div><div class="text-xl">🏅</div><div class="smallcaps">Menguasai</div></div></div>
+   </div>
+  </div>
+ </div>
+ <div class="mt-6 flex flex-wrap justify-between items-end gap-3"><div><div class="eyebrow">PILIH FAKSI</div><h2 class="serif text-2xl mt-1">Tentukan jalan petualanganmu</h2></div><div class="muted text-sm">Karakter orisinal bernuansa fantasi-sains</div></div>
+ <div class="grid md:grid-cols-3 gap-4 mt-4">
+  <button class="faction selected" data-f="sylva" onclick="selectFaction('sylva')"><div class="flex items-center gap-3"><div class="sigil">🧝</div><div><div class="serif text-lg text-emerald-200">Sylvan</div><div class="smallcaps">Penjaga Rimba Kuno</div></div></div><p class="muted text-sm mt-3">Peramu pengetahuan yang menggabungkan kristal, alam, dan teknologi kuno.</p></button>
+  <button class="faction" data-f="bellator" onclick="selectFaction('bellator')"><div class="flex items-center gap-3"><div class="sigil">🛡️</div><div><div class="serif text-lg text-amber-200">Bellator</div><div class="smallcaps">Serikat Rekayasa</div></div></div><p class="muted text-sm mt-3">Insinyur tangguh yang merakit perangkat dan memahami sistem mesin.</p></button>
+  <button class="faction" data-f="accretia" onclick="selectFaction('accretia')"><div class="flex items-center gap-3"><div class="sigil">🤖</div><div><div class="serif text-lg text-slate-200">Accretia</div><div class="smallcaps">Legiun Mekanis</div></div></div><p class="muted text-sm mt-3">Prajurit android yang mengandalkan logika, data, dan presisi mekanis.</p></button>
+ </div>
+ <div class="glass p-5 mt-6 flex flex-wrap items-center justify-between gap-4"><div><div class="eyebrow">PROGRES MISI</div><div class="serif text-xl mt-1">Pulihkan Inti Komputasi</div><p class="muted text-sm mt-1">Pelajari materi, raih skor kuis, lalu uji pemahaman lewat drag &amp; drop.</p></div><div class="flex gap-3"><div class="card text-center"><div class="text-2xl font-black text-amber-200" id="homeScore">0</div><div class="smallcaps">Poin</div></div><div class="card text-center"><div class="text-2xl font-black text-amber-200" id="homeDone">0/20</div><div class="smallcaps">Kuis</div></div></div></div>
+</section>
+
+<!-- TUJUAN: capaian pembelajaran dan alur belajar siswa. -->
+<section id="tujuan" class="tab">
+ <div class="glass p-6 md:p-9"><div class="eyebrow">01 • PETA EKSPEDISI</div><h2 class="serif text-3xl md:text-4xl mt-2 mb-3">Tujuan Pembelajaran</h2><p class="content-text">Setelah mengikuti pembelajaran ini, peserta didik kelas 7–9 diharapkan mampu memahami peran perangkat keras dalam sistem komputer dan menghubungkannya dengan kebutuhan sehari-hari.</p>
+ <div class="grid md:grid-cols-2 gap-4 mt-6">
+  <div class="card"><div class="text-3xl mb-2">🔎</div><h3 class="serif text-xl text-amber-100">Mengidentifikasi</h3><p class="muted mt-2">Mengenali komponen hardware komputer: perangkat input, proses, output, dan penyimpanan.</p></div>
+  <div class="card"><div class="text-3xl mb-2">⚙️</div><h3 class="serif text-xl text-amber-100">Menjelaskan fungsi</h3><p class="muted mt-2">Menjelaskan fungsi CPU, RAM, motherboard, media penyimpanan, dan perangkat pendukung.</p></div>
+  <div class="card"><div class="text-3xl mb-2">🔗</div><h3 class="serif text-xl text-amber-100">Mengelompokkan</h3><p class="muted mt-2">Mengelompokkan perangkat berdasarkan fungsi dan alur kerja sistem komputer.</p></div>
+  <div class="card"><div class="text-3xl mb-2">🧩</div><h3 class="serif text-xl text-amber-100">Menerapkan</h3><p class="muted mt-2">Memilih perangkat keras yang sesuai untuk kebutuhan belajar, komunikasi, dan pekerjaan digital.</p></div>
+ </div>
+ <div class="card mt-6"><div class="smallcaps mb-3">ALUR BELAJAR YANG DISARANKAN</div><div class="grid sm:grid-cols-4 gap-3 text-center"><div><div class="text-3xl">🏠</div><b>Orientasi</b><p class="muted text-xs">Kenali dunia Aetheria</p></div><div><div class="text-3xl">📖</div><b>Pelajari</b><p class="muted text-xs">Baca ensiklopedia hardware</p></div><div><div class="text-3xl">⚔️</div><b>Tantang diri</b><p class="muted text-xs">Jawab 20 soal kuis</p></div><div><div class="text-3xl">🧩</div><b>Praktik</b><p class="muted text-xs">Pasangkan fungsi perangkat</p></div></div></div>
+ </div>
+</section>
+
+<!-- MATERI: penjelasan ringkas kelompok hardware dan contoh. -->
+<section id="materi" class="tab">
+ <div class="glass p-6 md:p-9"><div class="eyebrow">02 • ENSIKLOPEDIA AETHERIA</div><h2 class="serif text-3xl md:text-4xl mt-2">Materi: Hardware Komputer</h2><p class="muted mt-2 mb-6">Hardware adalah seluruh bagian fisik komputer yang dapat dilihat dan disentuh.</p>
+ <div class="grid md:grid-cols-2 gap-4">
+  <article class="card"><div class="text-4xl">⌨️</div><h3 class="serif text-xl text-amber-100 mt-2">Perangkat Input</h3><p class="content-text mt-2">Digunakan untuk memasukkan data atau perintah ke komputer.</p><p class="muted text-sm mt-2"><strong>Contoh:</strong> keyboard, mouse, scanner, mikrofon, webcam.</p></article>
+  <article class="card"><div class="text-4xl">🧠</div><h3 class="serif text-xl text-amber-100 mt-2">Perangkat Proses</h3><p class="content-text mt-2">Mengolah data dan menjalankan instruksi sesuai program.</p><p class="muted text-sm mt-2"><strong>Contoh:</strong> CPU/prosesor, GPU. Motherboard menghubungkan komponen.</p></article>
+  <article class="card"><div class="text-4xl">🖥️</div><h3 class="serif text-xl text-amber-100 mt-2">Perangkat Output</h3><p class="content-text mt-2">Menyajikan hasil pengolahan data agar dapat dilihat atau didengar pengguna.</p><p class="muted text-sm mt-2"><strong>Contoh:</strong> monitor, printer, speaker, proyektor.</p></article>
+  <article class="card"><div class="text-4xl">💾</div><h3 class="serif text-xl text-amber-100 mt-2">Perangkat Penyimpanan</h3><p class="content-text mt-2">Menyimpan data dan program, baik sementara maupun jangka panjang.</p><p class="muted text-sm mt-2"><strong>Contoh:</strong> RAM (sementara), HDD, SSD, flashdisk (jangka panjang).</p></article>
+  <article class="card"><div class="text-4xl">🔌</div><h3 class="serif text-xl text-amber-100 mt-2">Motherboard &amp; PSU</h3><p class="content-text mt-2">Motherboard menjadi papan utama penghubung komponen. PSU memasok daya listrik untuk komputer.</p></article>
+  <article class="card"><div class="text-4xl">🌬️</div><h3 class="serif text-xl text-amber-100 mt-2">Pendingin &amp; Casing</h3><p class="content-text mt-2">Heatsink dan kipas membantu membuang panas. Casing melindungi serta menata komponen komputer.</p></article>
+ </div>
+ <div class="card mt-5"><div class="eyebrow">INGAT ALUR KERJA</div><div class="flex flex-wrap items-center justify-center gap-2 mt-3 text-center font-extrabold"><span class="pill">INPUT</span><span>→</span><span class="pill">PROSES</span><span>→</span><span class="pill">OUTPUT</span><span class="text-amber-200">↔</span><span class="pill">PENYIMPANAN</span></div><p class="muted text-sm text-center mt-3">Data dimasukkan, diolah, ditampilkan, dan dapat disimpan untuk digunakan kembali.</p></div>
+ </div>
+</section>
+
+<!-- KUIS: bank 20 soal, umpan balik, nilai dan progres jawaban. -->
+<section id="kuis" class="tab">
+ <div class="glass p-6 md:p-9"><div class="flex flex-wrap justify-between gap-3 items-center"><div><div class="eyebrow">03 • UJIAN PENJAGA INTI</div><h2 class="serif text-3xl mt-2">Kuis Interaktif</h2></div><div class="pill" id="quizFaction">FAKSI SYLVAN</div></div>
+ <p class="muted mt-2 mb-5">Jawab 20 pertanyaan. Setiap jawaban benar bernilai 10 poin. Baca pembahasan setelah menjawab.</p>
+ <div class="flex justify-between text-sm mb-2"><span id="quizCount">Pertanyaan 0/20</span><b id="quizScore" class="text-amber-200">Skor: 0</b></div><div class="meter mb-5"><span id="quizProgress"></span></div>
+ <div id="quizStart" class="card text-center py-8"><div class="text-5xl">📜</div><h3 class="serif text-2xl mt-3">Siap menerima tantangan?</h3><p class="muted my-3">Pastikan kamu sudah membaca ensiklopedia hardware.</p><button class="btn" onclick="startQuiz()">Mulai Kuis</button></div>
+ <div id="quizArea" class="hide"><div class="smallcaps" id="quizCategory">DASAR HARDWARE</div><h3 class="text-xl md:text-2xl font-extrabold my-4" id="quizQuestion"></h3><div id="quizOptions" class="grid md:grid-cols-2 gap-3"></div><div id="quizFeedback" class="card mt-4 hide"></div><div class="flex justify-end mt-4"><button id="quizNext" class="btn" onclick="nextQuestion()" disabled>Soal berikutnya →</button></div></div>
+ <div id="quizResult" class="card text-center mt-4 hide"><div class="text-5xl">🏆</div><h3 class="serif text-2xl mt-3">Tantangan selesai!</h3><div class="text-5xl text-amber-200 font-black my-3" id="finalQuizScore">0</div><p id="quizMessage" class="muted"></p><button class="btn mt-4" onclick="resetQuiz()">Ulangi kuis</button></div>
+ </div>
+</section>
+
+<!-- DRAG DROP: siswa mencocokkan nama komponen dengan fungsi. -->
+<section id="drag" class="tab">
+ <div class="glass p-6 md:p-9"><div class="eyebrow">04 • BENGKEL PERAKITAN</div><h2 class="serif text-3xl md:text-4xl mt-2">Drag &amp; Drop: Pasangkan Hardware</h2><p class="muted mt-2 mb-6">Tarik nama perangkat ke kotak fungsi yang tepat. Pada layar sentuh, ketuk nama perangkat lalu ketuk kotak tujuan.</p>
+ <div class="grid md:grid-cols-2 gap-6"><div><div class="smallcaps mb-3">KOMPONEN TERSEDIA</div><div id="dragItems" class="flex flex-wrap gap-2"></div></div><div><div class="smallcaps mb-3">PASANGKAN DENGAN FUNGSI</div><div id="dropTargets" class="space-y-3"></div></div></div>
+ <div class="flex flex-wrap gap-3 mt-6"><button class="btn" onclick="checkMatches()">Periksa jawaban</button><button class="btn btn-alt" onclick="resetDrag()">Ulangi latihan</button><span id="dragResult" class="muted self-center" aria-live="polite"></span></div>
+ </div>
+</section>
+
+<!-- TENTANG: identitas pengembang, deskripsi aplikasi, dan petunjuk. -->
+<section id="tentang" class="tab">
+ <div class="glass p-6 md:p-9"><div class="eyebrow">05 • CATATAN KREATOR</div><h2 class="serif text-3xl md:text-4xl mt-2 mb-5">Tentang Media</h2>
+ <div class="grid md:grid-cols-[.7fr_1.3fr] gap-5">
+  <div class="card text-center"><div class="text-6xl my-4">🧭</div><div class="serif text-2xl text-amber-100">Satriaji</div><div class="smallcaps mt-2">PENGEMBANG</div><div class="goldline my-4"></div><p class="muted text-sm">Media Pembelajaran Informatika</p></div>
+  <div class="card"><h3 class="serif text-xl text-amber-100">Application Overview</h3><p class="content-text mt-3">Hardware Chronicles adalah media pembelajaran berbasis web untuk membantu siswa kelas 7, 8, dan 9 mengenal perangkat keras komputer melalui narasi petualangan fantasi-sains, materi ringkas, kuis, dan aktivitas mencocokkan.</p><h3 class="serif text-xl text-amber-100 mt-5">Petunjuk penggunaan</h3><ul class="list-disc pl-5 muted space-y-2 mt-2"><li>Gunakan menu navigasi untuk berpindah bagian tanpa memuat ulang halaman.</li><li>Pilih salah satu faksi sebagai avatar petualang.</li><li>Baca materi sebelum mengerjakan kuis dan latihan drag &amp; drop.</li><li>Website dapat dibuka langsung melalui browser modern.</li></ul><h3 class="serif text-xl text-amber-100 mt-5">Catatan desain</h3><p class="muted text-sm mt-2">Dunia, nama faksi, dan avatar dalam media ini merupakan kreasi orisinal dengan nuansa fantasi-sains: perpaduan ornamen kuno, simbol peradaban, kristal, dan teknologi futuristik. Desain mengambil inspirasi umum dari genre fantasi-sains, bukan menyalin karakter atau aset resmi Mobile Legends maupun Rising Force Online.</p></div>
+ </div><p class="footer mt-6">© 2026 • Hardware Chronicles • Dibuat untuk kegiatan pembelajaran.</p></div>
+</section>
+</main>
+<footer class="text-center footer py-6">✦ PENGETAHUAN ADALAH INTI DARI SETIAP PERADABAN ✦</footer>
+</div>
+
+<script>
+// DATA FAKSI: tiga karakter orisinal beserta identitas dan deskripsi singkat.
+const factions={
+ sylva:{name:"Penjaga Sylvan",label:"FAKSI SYLVAN",avatar:"🧝",desc:"Pengetahuan alam, keseimbangan, dan kebijaksanaan."},
+ bellator:{name:"Ksatria Bellator",label:"FAKSI BELLATOR",avatar:"🛡️",desc:"Keberanian, rekayasa mesin, dan teknologi pertahanan."},
+ accretia:{name:"Legiun Accretia",label:"FAKSI ACCRETIA",avatar:"🤖",desc:"Logika, presisi mekanis, dan kekuatan komputasi."}
+};
+let selectedFaction="sylva";
+
+// NAVIGASI SPA: hanya tab terpilih yang ditampilkan, halaman tidak dimuat ulang.
+function goTab(id){
+ document.querySelectorAll(".tab").forEach(el=>el.classList.toggle("active",el.id===id));
+ document.querySelectorAll(".navbtn").forEach(el=>el.classList.toggle("active",el.dataset.tab===id));
+ window.scrollTo({top:0,behavior:"smooth"});
+}
+document.querySelectorAll(".navbtn").forEach(btn=>btn.addEventListener("click",()=>goTab(btn.dataset.tab)));
+
+// PEMILIHAN FAKSI: memperbarui avatar pada beranda dan identitas di bagian kuis.
+function selectFaction(id){
+ selectedFaction=id;const f=factions[id];
+ document.querySelectorAll(".faction").forEach(el=>el.classList.toggle("selected",el.dataset.f===id));
+ document.getElementById("heroAvatar").textContent=f.avatar;
+ document.getElementById("heroFaction").textContent=f.name;
+ document.getElementById("heroDesc").textContent=f.desc;
+ document.getElementById("quizFaction").textContent=f.label;
+}
+
+// BANK SOAL: 20 pertanyaan pilihan ganda tentang komponen dan fungsi hardware.
+const questions=[
+ {cat:"Dasar Hardware",q:"Apa yang dimaksud dengan hardware komputer?",a:["Program untuk mengolah data","Bagian fisik komputer yang dapat disentuh","Kumpulan aturan internet","Bahasa untuk membuat aplikasi"],c:1,e:"Hardware adalah komponen fisik komputer, seperti monitor, keyboard, prosesor, dan media penyimpanan."},
+ {cat:"Perangkat Input",q:"Perangkat yang digunakan untuk memasukkan teks ke komputer adalah ...",a:["Keyboard","Monitor","Speaker","Printer"],c:0,e:"Keyboard digunakan untuk memasukkan huruf, angka, simbol, dan perintah."},
+ {cat:"Perangkat Input",q:"Alat yang mengubah dokumen kertas menjadi file digital adalah ...",a:["Proyektor","Scanner","Speaker","Plotter"],c:1,e:"Scanner memindai dokumen fisik dan mengubahnya menjadi data digital."},
+ {cat:"Perangkat Output",q:"Manakah yang termasuk perangkat output?",a:["Mouse","Mikrofon","Monitor","Joystick"],c:2,e:"Monitor menampilkan hasil pengolahan komputer dalam bentuk visual."},
+ {cat:"Perangkat Output",q:"Perangkat untuk menghasilkan keluaran berupa suara adalah ...",a:["Speaker","Scanner","Keyboard","Webcam"],c:0,e:"Speaker mengubah sinyal audio menjadi suara yang dapat didengar."},
+ {cat:"Perangkat Proses",q:"Komponen yang sering disebut sebagai otak komputer adalah ...",a:["SSD","CPU","Casing","Mouse"],c:1,e:"CPU atau prosesor menjalankan instruksi dan mengolah data."},
+ {cat:"Perangkat Proses",q:"Papan utama yang menghubungkan berbagai komponen komputer disebut ...",a:["Motherboard","Heatsink","Flashdisk","Monitor"],c:0,e:"Motherboard menjadi tempat pemasangan dan jalur komunikasi antarkomponen."},
+ {cat:"Memori",q:"RAM berfungsi untuk ...",a:["Mencetak gambar","Menyimpan data sementara saat program berjalan","Mengeluarkan suara","Menghubungkan komputer ke proyektor"],c:1,e:"RAM menyimpan data sementara yang sedang digunakan. Isinya umumnya hilang ketika daya mati."},
+ {cat:"Penyimpanan",q:"Manakah perangkat penyimpanan jangka panjang?",a:["RAM","Register CPU","SSD","Cache CPU"],c:2,e:"SSD menyimpan data meskipun komputer dimatikan."},
+ {cat:"Penyimpanan",q:"Apa kepanjangan HDD?",a:["High Data Device","Hard Disk Drive","Hardware Digital Display","High Definition Disk"],c:1,e:"HDD adalah Hard Disk Drive, perangkat penyimpanan yang menggunakan piringan magnetik."},
+ {cat:"Daya dan Pendingin",q:"Komponen yang memasok daya listrik ke bagian komputer adalah ...",a:["PSU","GPU","RAM","NIC"],c:0,e:"Power Supply Unit (PSU) menyalurkan daya listrik sesuai kebutuhan komponen."},
+ {cat:"Daya dan Pendingin",q:"Mengapa prosesor memerlukan heatsink dan kipas?",a:["Agar suara lebih keras","Untuk membantu membuang panas","Untuk menyimpan file","Untuk menambah ukuran layar"],c:1,e:"Heatsink menyerap dan menyebarkan panas, sedangkan kipas membantu mengalirkan udara."},
+ {cat:"Grafis",q:"Komponen yang bertugas mengolah grafis dan membantu menampilkan visual adalah ...",a:["GPU","PSU","Keyboard","HDD"],c:0,e:"GPU memproses grafis, misalnya tampilan 3D, animasi, dan video."},
+ {cat:"Konektivitas",q:"Port yang umum digunakan untuk menghubungkan flashdisk adalah ...",a:["VGA","USB","HDMI","Audio"],c:1,e:"USB digunakan untuk menghubungkan flashdisk dan banyak perangkat periferal."},
+ {cat:"Konektivitas",q:"Perangkat yang memungkinkan komputer terhubung ke jaringan kabel adalah ...",a:["NIC / kartu jaringan","Webcam","Heatsink","Optical drive"],c:0,e:"NIC menyediakan antarmuka jaringan, misalnya Ethernet."},
+ {cat:"Perangkat Input",q:"Perangkat untuk menangkap gambar atau video saat rapat daring adalah ...",a:["Webcam","Printer","Speaker","UPS"],c:0,e:"Webcam menangkap gambar atau video dan mengirimkannya ke aplikasi."},
+ {cat:"Perangkat Output",q:"Alat yang menampilkan gambar komputer ke layar besar saat presentasi adalah ...",a:["Mikrofon","Proyektor","Scanner","Mouse"],c:1,e:"Proyektor menampilkan tampilan komputer ke permukaan atau layar."},
+ {cat:"Penerapan",q:"Komputer terasa lambat saat banyak aplikasi dibuka. Komponen yang kapasitasnya dapat membantu kondisi ini adalah ...",a:["Speaker","RAM","Mouse","Casing"],c:1,e:"RAM yang cukup membantu menjalankan beberapa aplikasi bersamaan, jika faktor lain juga memadai."},
+ {cat:"Penerapan",q:"Komputer menyala tetapi layar gelap. Pemeriksaan awal yang masuk akal adalah ...",a:["Memeriksa kabel dan sumber input monitor","Menghapus semua file","Mengganti speaker","Melepas semua tombol keyboard"],c:0,e:"Periksa daya monitor, kabel video, dan pilihan input sebelum menyimpulkan kerusakan komponen."},
+ {cat:"Konsep Sistem",q:"Urutan sederhana alur kerja komputer yang tepat adalah ...",a:["Output → Input → Proses","Proses → Output → Input","Input → Proses → Output","Penyimpanan → Output → Input"],c:2,e:"Data masuk melalui perangkat input, diolah oleh sistem, lalu hasilnya disajikan melalui perangkat output."}
+];
+let qIndex=0,qScore=0,qCorrect=0,qLocked=false;
+
+// MULAI KUIS: mengatur ulang skor dan menampilkan soal pertama.
+function startQuiz(){
+ qIndex=0;qScore=0;qCorrect=0;qLocked=false;
+ document.getElementById("quizStart").classList.add("hide");
+ document.getElementById("quizResult").classList.add("hide");
+ document.getElementById("quizArea").classList.remove("hide");
+ renderQuestion();
+}
+
+// TAMPILKAN SOAL: membuat pilihan jawaban dan memperbarui progres.
+function renderQuestion(){
+ const q=questions[qIndex];
+ document.getElementById("quizCategory").textContent=q.cat.toUpperCase();
+ document.getElementById("quizQuestion").textContent=(qIndex+1)+". "+q.q;
+ document.getElementById("quizCount").textContent=`Pertanyaan ${qIndex+1}/20`;
+ document.getElementById("quizScore").textContent="Skor: "+qScore;
+ document.getElementById("quizProgress").style.width=((qIndex)/questions.length*100)+"%";
+ document.getElementById("quizFeedback").classList.add("hide");
+ document.getElementById("quizNext").disabled=true;
+ document.getElementById("quizNext").textContent=qIndex===questions.length-1?"Lihat hasil →":"Soal berikutnya →";
+ qLocked=false;
+ const letters=["A","B","C","D"];
+ document.getElementById("quizOptions").innerHTML="";
+ q.a.forEach((answer,i)=>{
+  const button=document.createElement("button");button.className="choice";
+  button.innerHTML=`<span class="pill">${letters[i]}</span><span>${answer}</span>`;
+  button.addEventListener("click",()=>answerQuestion(i,button));
+  document.getElementById("quizOptions").appendChild(button);
+ });
+}
+
+// CEK JAWABAN: kunci pilihan setelah satu jawaban dan tampilkan penjelasan.
+function answerQuestion(choice,clicked){
+ if(qLocked)return;qLocked=true;
+ const q=questions[qIndex];const buttons=[...document.querySelectorAll("#quizOptions button")];
+ buttons.forEach((b,i)=>{b.disabled=true;if(i===q.c)b.classList.add("correct");});
+ const isCorrect=choice===q.c;
+ if(isCorrect){qScore+=10;qCorrect++;}else{clicked.classList.add("wrong");}
+ document.getElementById("quizScore").textContent="Skor: "+qScore;
+ const feedback=document.getElementById("quizFeedback");
+ feedback.classList.remove("hide");
+ feedback.innerHTML=`<div class="font-black ${isCorrect?"text-emerald-300":"text-rose-300"}">${isCorrect?"✓ Jawaban benar! +10 poin":"Belum tepat. Tetap semangat!"}</div><p class="muted mt-2">${q.e}</p>`;
+ document.getElementById("quizNext").disabled=false;
+}
+
+// SOAL BERIKUTNYA: pindah ke soal selanjutnya atau tampilkan hasil akhir.
+function nextQuestion(){
+ if(!qLocked)return;
+ qIndex++;
+ if(qIndex<questions.length){renderQuestion();return;}
+ document.getElementById("quizArea").classList.add("hide");
+ document.getElementById("quizResult").classList.remove("hide");
+ document.getElementById("quizProgress").style.width="100%";
+ document.getElementById("quizCount").textContent="Pertanyaan 20/20";
+ document.getElementById("finalQuizScore").textContent=qScore+"/200";
+ const message=qScore>=180?"Luar biasa! Kamu telah menjadi Master Hardware.":qScore>=130?"Hebat! Pengetahuan hardware-mu sudah kuat.":qScore>=80?"Bagus! Terus pelajari ensiklopedia dan coba lagi.":"Jangan menyerah. Baca materi, lalu ulangi tantangan!";
+ document.getElementById("quizMessage").textContent=`${message} Jawaban benar: ${qCorrect} dari 20 soal.`;
+ document.getElementById("homeScore").textContent=qScore;
+ document.getElementById("homeDone").textContent="20/20";
+}
+
+// ULANGI KUIS: mengembalikan layar ke kondisi awal.
+function resetQuiz(){
+ document.getElementById("quizResult").classList.add("hide");
+ document.getElementById("quizStart").classList.remove("hide");
+ document.getElementById("quizProgress").style.width="0%";
+ document.getElementById("quizCount").textContent="Pertanyaan 0/20";
+}
+
+// DATA LATIHAN: pasangan nama komponen dan deskripsi fungsi yang benar.
+const matches=[
+ {name:"Keyboard",desc:"Memasukkan teks, angka, dan perintah",id:"keyboard"},
+ {name:"CPU",desc:"Mengolah data dan menjalankan instruksi",id:"cpu"},
+ {name:"Monitor",desc:"Menampilkan informasi secara visual",id:"monitor"},
+ {name:"SSD",desc:"Menyimpan file dalam jangka panjang",id:"ssd"},
+ {name:"Speaker",desc:"Mengeluarkan suara dari komputer",id:"speaker"}
+];
+let selectedDrag=null;let dragAnswers={};
+
+// INISIALISASI DRAG DROP: acak urutan komponen dan buat area jawaban.
+function initDrag(){
+ selectedDrag=null;dragAnswers={};
+ const items=[...matches].sort(()=>Math.random()-.5);
+ const itemWrap=document.getElementById("dragItems");itemWrap.innerHTML="";
+ items.forEach(item=>{
+  const el=document.createElement("button");el.className="dragitem";el.textContent=item.name;el.draggable=true;el.dataset.id=item.id;
+  el.addEventListener("dragstart",e=>{e.dataTransfer.setData("text/plain",item.id);});
+  el.addEventListener("click",()=>selectDrag(item.id,el));
+  itemWrap.appendChild(el);
+ });
+ const targetWrap=document.getElementById("dropTargets");targetWrap.innerHTML="";
+ [...matches].sort(()=>Math.random()-.5).forEach(item=>{
+  const zone=document.createElement("div");zone.className="dropzone";zone.dataset.answer=item.id;
+  zone.innerHTML=`<div><div class="text-sm font-bold">${item.desc}</div><div class="smallcaps mt-2 zone-label">LETAKKAN KOMPONEN DI SINI</div></div>`;
+  zone.addEventListener("dragover",e=>{e.preventDefault();zone.classList.add("over");});
+  zone.addEventListener("dragleave",()=>zone.classList.remove("over"));
+  zone.addEventListener("drop",e=>{e.preventDefault();zone.classList.remove("over");placeItem(e.dataTransfer.getData("text/plain"),zone);});
+  zone.addEventListener("click",()=>{if(selectedDrag)placeItem(selectedDrag,zone);});
+  targetWrap.appendChild(zone);
+ });
+ document.getElementById("dragResult").textContent="";
+}
+
+// PILIH KOMPONEN: mendukung interaksi sentuh selain drag dengan mouse.
+function selectDrag(id,element){
+ selectedDrag=id;document.querySelectorAll(".dragitem").forEach(el=>el.classList.toggle("selected",el===element));
+ document.getElementById("dragResult").textContent="Dipilih: "+matches.find(x=>x.id===id).name+". Sekarang pilih kotak fungsi.";
+}
+
+// LETAKKAN KOMPONEN: memasangkan komponen ke kotak dan mengembalikan item lama jika perlu.
+function placeItem(id,zone){
+ if(!id)return;
+ const previous=zone.dataset.placed;
+ if(previous){const old=document.querySelector(`.dragitem[data-id="${previous}"]`);if(old)old.classList.remove("hide");}
+ const already=document.querySelector(`.dropzone[data-placed="${id}"]`);
+ if(already&&already!==zone){already.dataset.placed="";already.classList.remove("filled");already.querySelector(".zone-label").textContent="LETAKKAN KOMPONEN DI SINI";}
+ zone.dataset.placed=id;zone.classList.add("filled");
+ zone.querySelector(".zone-label").textContent="TERPASANG: "+matches.find(x=>x.id===id).name.toUpperCase();
+ const item=document.querySelector(`.dragitem[data-id="${id}"]`);if(item)item.classList.add("hide");
+ selectedDrag=null;document.querySelectorAll(".dragitem").forEach(el=>el.classList.remove("selected"));
+ document.getElementById("dragResult").textContent="Komponen dipasang. Periksa jawabanmu!";
+}
+
+// PERIKSA PASANGAN: menghitung jumlah komponen yang ditempatkan dengan benar.
+function checkMatches(){
+ let correct=0;
+ document.querySelectorAll(".dropzone").forEach(zone=>{
+  const ok=zone.dataset.placed===zone.dataset.answer;
+  zone.style.borderColor=ok?"#6dc8a2":"#d87e79";
+  if(ok)correct++;
+ });
+ document.getElementById("dragResult").textContent=`Hasil: ${correct} dari ${matches.length} pasangan benar. ${correct===matches.length?"Sempurna! Inti komputasi berhasil dipulihkan!":"Coba periksa kembali pasangan yang belum tepat."}`;
+}
+
+// ULANGI LATIHAN: susun ulang pilihan dan kosongkan semua kotak.
+function resetDrag(){initDrag();}
+
+// INISIALISASI AWAL: siapkan latihan drag-and-drop dan tampilan awal.
+initDrag();
+</script>
+</body>
+</html>
